@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  vllm-qwen3.6-nvfp4:
+    image: vllm-qwen3.6-nvfp4:latest
+    container_name: vllm-qwen3.6-nvfp4
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
